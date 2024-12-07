@@ -1,0 +1,406 @@
+@font-face {
+  font-family: 'Doto';
+  src: url(chrome-extension://__MSG_@@extension_id__/Doto-VariableFont_ROND,wght.ttf) format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+#everpresent-bar {
+  position: fixed;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  padding: 0;
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 36px;
+  pointer-events: auto;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#everpresent-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 36px;
+  background: linear-gradient(145deg, 
+    rgba(28, 28, 28, 0.95) 0%,
+    rgba(23, 23, 23, 0.97) 50%,
+    rgba(18, 18, 18, 0.98) 100%);
+  border-radius: 18px;
+  padding: 0 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15),
+              0 0 1px rgba(255, 255, 255, 0.1),
+              inset 0 0.5px 0 0 rgba(255, 255, 255, 0.15);
+  min-width: 200px;
+  max-width: 800px;
+  width: auto;
+  backdrop-filter: blur(24px) saturate(1.8);
+  -webkit-backdrop-filter: blur(24px) saturate(1.8);
+  position: relative;
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+  user-select: none;
+  cursor: default;
+  margin: 0 auto;
+}
+
+#everpresent-container.collapsed {
+  width: 48px !important;
+  min-width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  padding: 0;
+  gap: 0;
+  background: linear-gradient(145deg, 
+    rgba(32, 32, 32, 0.95) 0%,
+    rgba(28, 28, 28, 0.97) 50%,
+    rgba(23, 23, 23, 0.98) 100%);
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2),
+              0 0 1px rgba(255, 255, 255, 0.1),
+              inset 0 0.5px 0 0 rgba(255, 255, 255, 0.12);
+}
+
+#everpresent-container.collapsed:hover {
+  transform: scale(1.05);
+  background: linear-gradient(145deg, 
+    rgba(38, 38, 38, 0.95) 0%,
+    rgba(32, 32, 32, 0.97) 50%,
+    rgba(28, 28, 28, 0.98) 100%);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25),
+              0 0 1px rgba(255, 255, 255, 0.1),
+              inset 0 0.5px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+#everpresent-container.collapsed #everpresent-input,
+#everpresent-container.collapsed .collapse-dot,
+#everpresent-container.collapsed .input-container {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  visibility: hidden;
+  transform: scale(0);
+}
+
+.collapse-dot {
+  position: relative;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  z-index: 2;
+}
+
+.collapse-dot:hover {
+  background: rgba(255, 255, 255, 0.95);
+  transform: scale(1.2);
+}
+
+.input-container {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+  margin: 0 16px;
+  overflow: visible;
+}
+
+#everpresent-input {
+  width: 100%;
+  height: 36px;
+  background: none;
+  border: none;
+  border-width: 0;
+  border-style: none;
+  border-color: transparent;
+  font-family: 'Doto', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 15px;
+  font-weight: normal;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  outline: 0;
+  outline-style: none;
+  outline-width: 0;
+  outline-color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  box-shadow: none;
+  box-sizing: border-box;
+  line-height: 36px;
+  transition: none;
+  pointer-events: auto;
+  white-space: nowrap;
+  overflow: visible;
+  letter-spacing: 0.03em;
+  min-width: 0;
+  max-width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  caret-color: white;
+}
+
+/* Chrome autofill and focus states */
+#everpresent-input:-webkit-autofill,
+#everpresent-input:-webkit-autofill:focus,
+#everpresent-input:-webkit-autofill:active,
+#everpresent-input:focus,
+#everpresent-input:active,
+#everpresent-input:not(:focus) {
+  background: none !important;
+  border: none !important;
+  outline: none !important;
+  -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+#everpresent-input::selection {
+  background: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 1);
+}
+
+#everpresent-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  opacity: 1;
+}
+
+.eyes-container {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  flex-shrink: 0;
+  height: 36px;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  z-index: 1;
+  margin-left: 16px;
+}
+
+#everpresent-container.collapsed .eyes-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  opacity: 1;
+  pointer-events: none;
+  margin: 0;
+}
+
+.eye-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 12px;
+  height: 16px;
+  position: relative;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.eyebrow {
+  width: 8px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 1px;
+  transition: all 0.4s ease;
+  transform-origin: center;
+}
+
+.eye-dot {
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  position: relative;
+  transition: all 0.4s ease;
+}
+
+/* Expression classes for eyebrows */
+.eyebrow-raised {
+  transform: translateY(-2px) rotate(-15deg);
+}
+
+.eyebrow-raised-reverse {
+  transform: translateY(-2px) rotate(15deg);
+}
+
+.eyebrow-angry {
+  transform: translateY(1px) rotate(-25deg);
+  width: 10px;
+}
+
+.eyebrow-angry-reverse {
+  transform: translateY(1px) rotate(25deg);
+  width: 10px;
+}
+
+.eyebrow-sad {
+  transform: translateY(1px) rotate(15deg);
+}
+
+.eyebrow-sad-reverse {
+  transform: translateY(1px) rotate(-15deg);
+}
+
+.eyebrow-surprised {
+  transform: translateY(-3px);
+  width: 10px;
+}
+
+/* Expression classes for eyes */
+.eye-wink {
+  transform: scaleY(0.2);
+}
+
+.eye-squint {
+  transform: scaleY(0.5);
+}
+
+.eye-wide {
+  transform: scale(1.2);
+}
+
+.eye-roll {
+  animation: rollEye 1.5s ease-in-out;
+}
+
+@keyframes rollEye {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(1.5px, -1.5px); }
+  50% { transform: translate(1.5px, 1.5px); }
+  75% { transform: translate(-1.5px, 1.5px); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Hide eyes when typing */
+#everpresent-container:focus-within .eye-icon {
+  opacity: 0.5;
+  transition: opacity 0.3s ease;
+}
+
+/* Add more expressions to existing styles */
+
+/* Eyebrow expressions */
+.eyebrow-skeptical-left {
+  transform: translateY(-1px) rotate(-20deg);
+  width: 10px;
+}
+
+.eyebrow-skeptical-right {
+  transform: translateY(1px);
+}
+
+.eyebrow-angry-concerned {
+  transform: translateY(2px) rotate(-30deg);
+  width: 12px;
+}
+
+.eyebrow-worried {
+  transform: translateY(-1px) rotate(15deg);
+}
+
+.eyebrow-excited {
+  transform: translateY(-3px) rotate(-5deg);
+  width: 10px;
+}
+
+.eyebrow-suspicious-left {
+  transform: translateY(-2px) rotate(-25deg);
+  width: 9px;
+}
+
+.eyebrow-suspicious-right {
+  transform: translateY(-2px) rotate(25deg);
+  width: 9px;
+}
+
+/* Eye expressions */
+.eye-happy {
+  transform: scaleY(0.3) translateY(2px);
+}
+
+.eye-suspicious {
+  transform: scaleY(0.6);
+}
+
+.eye-excited {
+  transform: scale(1.2);
+}
+
+.eye-worried {
+  transform: scaleY(0.7) translateY(-1px);
+}
+
+.eye-looking-left {
+  transform: translateX(-2px);
+}
+
+.eye-looking-right {
+  transform: translateX(2px);
+}
+
+.eye-looking-up {
+  transform: translateY(-2px);
+}
+
+.eye-looking-down {
+  transform: translateY(2px);
+}
+
+/* Combined expressions with animations */
+@keyframes glance-around {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, 0); }
+  40% { transform: translate(2px, 0); }
+  60% { transform: translate(0, -2px); }
+  80% { transform: translate(0, 2px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+@keyframes suspicious-look {
+  0%, 100% { transform: translate(0, 0) scaleY(0.6); }
+  30% { transform: translate(-2px, 0) scaleY(0.6); }
+  70% { transform: translate(2px, 0) scaleY(0.6); }
+}
+
+.eye-scanning {
+  animation: glance-around 3s ease-in-out;
+}
+
+.eye-blinking {
+  animation: blink 4s infinite;
+}
+
+.eye-suspicious-scanning {
+  animation: suspicious-look 2s ease-in-out;
+}
+
+/* Add occasional random blink */
+.eyes-container:hover .eye-dot {
+  animation: blink 4s infinite;
+}

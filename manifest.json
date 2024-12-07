@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Everpresent",
+  "version": "1.0",
+  "description": "A persistent text bar that stays at the top of every page",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "css": ["styles.css"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "web_accessible_resources": [{
+    "resources": ["Doto-VariableFont_ROND,wght.ttf"],
+    "matches": ["<all_urls>"]
+  }]
+} 
